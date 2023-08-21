@@ -1,0 +1,1137 @@
+{
+	"defaultTemplate": {
+		"energyMax": 120,
+		"energyEfficiency": 1,
+		"skill": 30,
+		"basicATK": 20,
+		"singleAttacked": 10,
+		"groupAttacked": 5,
+		"enemyKill": 10,
+		"followUp": 0,
+		"ultimate": 0,
+		"special": null,
+		"special_1": null,
+		"special_2": null,
+		"special_3": null,
+		"turnStart": 0,
+		"turnEnd": 0,
+		"ATK": [
+			"basicATK",
+			"skill",
+			"ultimate"
+		]
+	},
+	"types": {
+		"同谐": {
+			"characters": {
+				"艾丝妲": {
+					"attribute": "火",
+					"energyMax": 120,
+					"ATK": [
+						"basicATK",
+						"skill"
+					],
+					"skills": {
+						"星魂1": {
+							"alwaysActive": false,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"skill": 6
+								}
+							]
+						},
+						"星魂4": {
+							"alwaysActive": false,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"energyEfficiency": 0.15
+								}
+							]
+						}
+					}
+				},
+				"停云": {
+					"attribute": "雷",
+					"energyMax": 130,
+					"ATK": [
+						"basicATK"
+					],
+					"skills": {
+						"亨通": {
+							"alwaysActive": true,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"turnStart": 5
+								}
+							]
+						}
+					}
+				},
+				"布洛妮娅": {
+					"attribute": "风",
+					"energyMax": 120,
+					"followUp": 10,
+					"ATK": [
+						"basicATK",
+						"followUp"
+					],
+					"skills": {}
+				},
+				"驭空": {
+					"attribute": "虚数",
+					"energyMax": 130,
+					"ATK": [
+						"basicATK",
+						"ultimate"
+					],
+					"skills": {
+						"气壮": {
+							"alwaysActive": true,
+							"description": "持有鸣弦号令时，我方行动后",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 2
+								}
+							]
+						},
+						"星魂2": {
+							"alwaysActive": false,
+							"description": "我方能量等于上限时",
+							"levels": [
+								3,
+								{
+									"level": 1,
+									"energy": 5
+								},
+								{
+									"level": 2,
+									"energy": 10
+								},
+								{
+									"level": 3,
+									"energy": 15
+								}
+							]
+						}
+					}
+				}
+			},
+			"lightCones": {
+				"轮契": {
+					"alwaysActive": true,
+					"levels": [
+						5,
+						{
+							"level": 5,
+							"ATK": 8,
+							"singleAttacked": 8,
+							"groupAttacked": 8
+						},
+						{
+							"level": 4,
+							"ATK": 7,
+							"singleAttacked": 7,
+							"groupAttacked": 7
+						},
+						{
+							"level": 3,
+							"ATK": 6,
+							"singleAttacked": 6,
+							"groupAttacked": 6
+						},
+						{
+							"level": 2,
+							"ATK": 5,
+							"singleAttacked": 5,
+							"groupAttacked": 5
+						},
+						{
+							"level": 1,
+							"ATK": 4,
+							"singleAttacked": 4,
+							"groupAttacked": 4
+						}
+					]
+				},
+				"记忆中的模样": {
+					"alwaysActive": true,
+					"levels": [
+						5,
+						{
+							"level": 1,
+							"ATK": 4
+						},
+						{
+							"level": 2,
+							"ATK": 5
+						},
+						{
+							"level": 3,
+							"ATK": 6
+						},
+						{
+							"level": 4,
+							"ATK": 7
+						},
+						{
+							"level": 5,
+							"ATK": 8
+						}
+					]
+				},
+				"但战斗还未结束": {
+					"alwaysActive": true,
+					"levels": [
+						5,
+						{
+							"level": 1,
+							"energyEfficiency": 0.1
+						},
+						{
+							"level": 2,
+							"energyEfficiency": 0.12
+						},
+						{
+							"level": 3,
+							"energyEfficiency": 0.14
+						},
+						{
+							"level": 4,
+							"energyEfficiency": 0.16
+						},
+						{
+							"level": 5,
+							"energyEfficiency": 0.18
+						}
+					]
+				}
+			}
+		},
+		"虚无": {
+			"characters": {
+				"佩拉": {
+					"attribute": "冰",
+					"energyMax": 110,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {
+						"星魂1": {
+							"alwaysActive": false,
+							"description": "敌方目标被消灭时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 5
+								}
+							]
+						},
+						"天赋": {
+							"alwaysActive": true,
+							"levels": [
+								7,
+								{
+									"level": 6,
+									"ATK": 7.5
+								},
+								{
+									"level": 7,
+									"ATK": 8.1
+								},
+								{
+									"level": 8,
+									"ATK": 8.7
+								},
+								{
+									"level": 9,
+									"ATK": 9.3
+								},
+								{
+									"level": 10,
+									"ATK": 10
+								},
+								{
+									"level": 11,
+									"ATK": 10.5
+								},
+								{
+									"level": 12,
+									"ATK": 11
+								}
+							]
+						}
+					}
+				},
+				"桑博": {
+					"attribute": "风",
+					"energyMax": "120",
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {
+						"星魂1": {
+							"alwaysActive": false,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"skill": 6
+								}
+							]
+						},
+						"后手": {
+							"alwaysActive": true,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"ultimate": 10
+								}
+							]
+						}
+					}
+				},
+				"瓦尔特": {
+					"attribute": "虚数",
+					"energyMax": 120,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {
+						"星魂2": {
+							"alwaysActive": false,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"ATK": 3
+								}
+							]
+						},
+						"审判": {
+							"alwaysActive": true,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"ultimate": 10
+								}
+							]
+						}
+					}
+				},
+				"银狼": {
+					"attribute": "量子",
+					"energyMax": 110,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {
+						"星魂1": {
+							"alwaysActive": false,
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"energy": 7
+								},
+								{
+									"level": 2,
+									"energy": 14
+								},
+								{
+									"level": 3,
+									"energy": 21
+								},
+								{
+									"level": 4,
+									"energy": 28
+								},
+								{
+									"level": 5,
+									"energy": 35
+								}
+							]
+						}
+					}
+				},
+				"卢卡": {
+					"attribute": "物理",
+					"energyMax": 130,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {
+						"循环制动": {
+							"alwaysActive": true,
+							"description": "每获得1层【斗志】",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 3
+								}
+							]
+						}
+					}
+				},
+				"卡芙卡": {
+					"attribute": "雷",
+					"energyMax": 120,
+					"followUp": 10,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate",
+						"followUp"
+					],
+					"skills": {
+						"掠夺": {
+							"alwaysActive": true,
+							"description": "触电状态下的目标被消灭",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 5
+								}
+							]
+						}
+					}
+				}
+			},
+			"lightCones": {
+				"新手任务开始前": {
+					"alwaysActive": true,
+					"levels": [
+						5,
+						{
+							"level": 5,
+							"ATK": 8
+						},
+						{
+							"level": 4,
+							"ATK": 7
+						},
+						{
+							"level": 3,
+							"ATK": 6
+						},
+						{
+							"level": 2,
+							"ATK": 5
+						},
+						{
+							"level": 1,
+							"ATK": 4
+						}
+
+					]
+				}
+			}
+		},
+		"丰饶": {
+			"characters": {
+				"娜塔莎": {
+					"attribute": "物理",
+					"energyMax": 90,
+					"ATK": [
+						"basicATK"
+					],
+					"skills": {
+						"星魂4": {
+							"alwaysActive": false,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"singleAttacked": 5,
+									"groupAttacked": 5
+								}
+							]
+						}
+					}
+				},
+				"白露": {
+					"attribute": "雷",
+					"energyMax": 100,
+					"ATK": [
+						"basicATK"
+					],
+					"skills": {}
+				},
+				"罗刹": {
+					"attribute": "虚数",
+					"energyMax": 100,
+					"ATK": [
+						"basicATK",
+						"ultimate"
+					],
+					"skills": {
+						"白花的祈望": {
+							"alwaysActive": false,
+							"description": "自动释放战技不消耗回合",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"energy": 30
+								}
+							]
+						}
+					}
+				}
+			},
+			"lightCones": {
+				"一场术后对话": {
+					"alwaysActive": true,
+					"levels": [
+						5,
+						{
+							"level": 1,
+							"energyEfficiency": 0.08
+						},
+						{
+							"level": 2,
+							"energyEfficiency": 0.1
+						},
+						{
+							"level": 3,
+							"energyEfficiency": 0.12
+						},
+						{
+							"level": 4,
+							"energyEfficiency": 0.14
+						},
+						{
+							"level": 5,
+							"energyEfficiency": 0.16
+						}
+					]
+				},
+				"同一种心情": {
+					"alwaysActive": true,
+					"levels": [
+						5,
+						{
+							"level": 1,
+							"skill": 2
+						},
+						{
+							"level": 2,
+							"skill": 3
+						},
+						{
+							"level": 3,
+							"skill": 3
+						},
+						{
+							"level": 4,
+							"skill": 4
+						},
+						{
+							"level": 5,
+							"skill": 4
+						}
+					]
+				},
+				"棺的回响": {
+					"alwaysActive": true,
+					"description": "每命中1个敌人",
+					"levels": [
+						5,
+						{
+							"level": 1,
+							"special_3": 3
+						},
+						{
+							"level": 2,
+							"special_3": 4
+						},
+						{
+							"level": 3,
+							"special_3": 4
+						},
+						{
+							"level": 4,
+							"special_3": 5
+						},
+						{
+							"level": 5,
+							"special_3": 5
+						}
+					]
+				},
+				"嘉果": {
+					"alwaysActive": true,
+					"levels": [
+						5,
+						{
+							"level": 1,
+							"energy": 6
+						},
+						{
+							"level": 2,
+							"energy": 8
+						},
+						{
+							"level": 3,
+							"energy": 9
+						},
+						{
+							"level": 4,
+							"energy": 11
+						},
+						{
+							"level": 5,
+							"energy": 12
+						}
+					]
+				}
+			}
+		},
+		"智识": {
+			"characters": {
+				"黑塔": {
+					"attribute": "冰",
+					"energyMax": 110,
+					"followUp": 5,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate",
+						"followUp"
+					],
+					"skills": {}
+				},
+				"青雀": {
+					"attribute": "量子",
+					"energyMax": 140,
+					"skill": 0,
+					"ATK": [
+						"basicATK",
+						"ultimate"
+					],
+					"skills": {
+						"星魂2": {
+							"alwaysActive": false,
+							"description": "每次摸牌时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 1
+								}
+							]
+						},
+						"星魂4": {
+							"alwaysActive": false,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"followUp": 10
+								}
+							]
+						}
+					}
+				},
+				"希露瓦": {
+					"attribute": "雷",
+					"energyMax": 100,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {
+						"电音": {
+							"alwaysActive": false,
+							"description": "战斗开始时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"energy": 15
+								}
+							]
+						},
+						"星魂2": {
+							"alwaysActive": false,
+							"description": "每次触发天赋的附加伤害时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 4
+								}
+							]
+						}
+					}
+				},
+				"姬子": {
+					"attribute": "火",
+					"energyMax": 120,
+					"followUp": 10,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {
+						"终结技": {
+							"alwaysActive": true,
+							"description": "终结技每消灭1个敌人",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 5
+								}
+							]
+						},
+						"星魂4": {
+							"alwaysActive": false,
+							"description": "战技造成击破时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special_1": 1
+								}
+							]
+						}
+					}
+				},
+				"景元": {
+					"attribute": "雷",
+					"energyMax": 130,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate",
+						"followUp"
+					],
+					"skills": {
+						"绸缪": {
+							"alwaysActive": false,
+							"description": "战斗开始时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"energy": 5
+								}
+							]
+						},
+						"星魂4": {
+							"alwaysActive": false,
+							"description": "神君每段攻击",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 2
+								}
+							]
+						}
+					}
+				}
+			},
+			"lightCones": {
+				"别让世界静下来": {
+					"alwaysActive": false,
+					"description": "进入战斗时",
+					"levels": [
+						5,
+						{
+							"level": 1,
+							"energy": 20
+						},
+						{
+							"level": 2,
+							"energy": 23
+						},
+						{
+							"level": 3,
+							"energy": 26
+						},
+						{
+							"level": 4,
+							"energy": 29
+						},
+						{
+							"level": 5,
+							"energy": 32
+						}
+					]
+				},
+				"灵钥": {
+					"alwaysActive": true,
+					"levels": [
+						5,
+						{
+							"level": 5,
+							"skill": 12
+						},
+						{
+							"level": 4,
+							"skill": 11
+						},
+						{
+							"level": 3,
+							"skill": 10
+						},
+						{
+							"level": 2,
+							"skill": 9
+						},
+						{
+							"level": 1,
+							"skill": 8
+						}
+					]
+				}
+			}
+		},
+		"存护": {
+			"characters": {
+				"三月七": {
+					"attribute": "冰",
+					"energyMax": 120,
+					"followUp": 10,
+					"ATK": [
+						"basicATK",
+						"ultimate",
+						"followUp"
+					],
+					"skills": {
+						"星魂1": {
+							"alwaysActive": false,
+							"description": "终结技每冻结1个敌人",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 6
+								}
+							]
+						}
+					}
+				},
+				"开拓者": {
+					"attribute": "火",
+					"energyMax": 120,
+					"ATK": [
+						"basicATK",
+						"ultimate"
+					],
+					"skills": {
+						"行胜思": {
+							"alwaysActive": true,
+							"description": "若持有护盾，回合开始时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 5
+								}
+							]
+						}
+					}
+				},
+				"杰帕德": {
+					"attribute": "冰",
+					"energyMax": 120,
+					"ATK": [
+						"basicATK",
+						"skill"
+					],
+					"skills": {}
+				}
+			},
+			"lightCones": {}
+		},
+		"毁灭": {
+			"characters": {
+				"开拓者": {
+					"attribute": "物理",
+					"energyMax": 120,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {
+						"蓄势": {
+							"alwaysActive": false,
+							"description": "战斗开始时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"energy": 15
+								}
+							]
+						},
+						"星魂1": {
+							"alwaysActive": false,
+							"description": "终结技消灭敌人时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 10
+								}
+							]
+						}
+					}
+				},
+				"克拉拉": {
+					"attribute": "物理",
+					"energyMax": 110,
+					"followUp": 5,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"followUp"
+					],
+					"skills": {}
+				},
+				"阿兰": {
+					"attribute": "雷",
+					"energyMax": 110,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {}
+				},
+				"虎克": {
+					"attribute": "火",
+					"energyMax": 120,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {
+						"玩火": {
+							"alwaysActive": true,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"ultimate": 5
+								}
+							]
+						}
+					}
+				},
+				"刃": {
+					"attribute": "风",
+					"energyMax": 130,
+					"basicATK": 20,
+					"skill": 0,
+					"followUp": 10,
+					"ATK": [
+						"basicATK",
+						"ultimate",
+						"followUp",
+						"special"
+					],
+					"skills": {
+						"战技": {
+							"alwaysActive": true,
+							"description": "强化普攻时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 30
+								}
+							]
+						}
+					}
+				}
+			},
+			"lightCones": {}
+		},
+		"寻猎": {
+			"characters": {
+				"丹恒": {
+					"attribute": "风",
+					"energyMax": 100,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {}
+				},
+				"素裳": {
+					"attribute": "物理",
+					"energyMax": 120,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {}
+				},
+				"彦卿": {
+					"attribute": "冰",
+					"energyMax": 140,
+					"followUp": 10,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate",
+						"followUp"
+					],
+					"skills": {
+						"星魂2": {
+							"alwaysActive": false,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"energyEfficiency": 0.1
+								}
+							]
+						}
+					}
+				},
+				"希儿": {
+					"attribute": "量子",
+					"energyMax": 120,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {
+						"星魂4": {
+							"alwaysActive": false,
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"enemyKill": 15
+								}
+							]
+						}
+					}
+				}
+			},
+			"lightCones": {}
+		}
+	},
+	"extraEffects": {
+		"翁瓦克": {
+			"levels": [
+				1,
+				{
+					"level": 1,
+					"energyEfficiency": 0.05
+				}
+			]
+		},
+		"充能绳": {
+			"levels": [
+				2,
+				{
+					"level": 5,
+					"energyEfficiency": 0.1944
+				},
+				{
+					"level": 4,
+					"energyEfficiency": 0.1294
+				}
+			]
+		},
+		"停云": {
+			"levels": [
+				2,
+				{
+					"level": 0,
+					"extraEnergy": 50
+				},
+				{
+					"level": 6,
+					"extraEnergy": 60
+				}
+			]
+		},
+		"等价交换": {
+			"levels": [
+				5,
+				{
+					"level": 1,
+					"energy": 8
+				},
+				{
+					"level": 2,
+					"energy": 10
+				},
+				{
+					"level": 3,
+					"energy": 12
+				},
+				{
+					"level": 4,
+					"energy": 14
+				},
+				{
+					"level": 5,
+					"energy": 16
+				}
+			]
+		},
+		"镂月裁云之意": {
+			"levels": [
+				5,
+				{
+					"level": 1,
+					"energyEfficiency": 0.06
+				},
+				{
+					"level": 2,
+					"energyEfficiency": 0.075
+				},
+				{
+					"level": 3,
+					"energyEfficiency": 0.09
+				},
+				{
+					"level": 4,
+					"energyEfficiency": 0.105
+				},
+				{
+					"level": 5,
+					"energyEfficiency": 0.12
+				}
+			]
+		}
+	}
+}
