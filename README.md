@@ -23,7 +23,7 @@
 
 ## 其他
 
-本页面使用了来自[RemixIcon](https://github.com/Remix-Design/RemixIcon/)的图标。
+本页面使用了来自 [RemixIcon](https://github.com/Remix-Design/RemixIcon/) 的图标。
 
 ## 许可证
 

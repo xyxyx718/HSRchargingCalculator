@@ -226,6 +226,14 @@
 		<view class="version">
 			<view class="hint">充能计算器 {{version}}</view>
 		</view>
+
+		<view class="opensource">
+			<view class="opensource-tap" hover-class="opensource-tap-hover" @click="HSRchargingCalculator()">
+				<view class="opensource-hint">本页面开源于</view>
+				<image class="opensource-icon" src="../../static/github-fill.png"></image>
+				<view class="opensource-hint">HSRchargingCalculator</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -548,6 +556,10 @@
 					return true;
 				}
 
+				if (this.currentCharacter.ATK.includes(action)) {
+					return true;
+				}
+
 				// 检查角色技能
 				if (this.currentCharacter.skills)
 					for (let skillName in this.currentCharacter.skills) {
@@ -661,9 +673,15 @@
 				}
 
 				return value;
-			}
+			},
 
 			// ... 其他方法
+
+			HSRchargingCalculator() {
+				uni.navigateTo({
+					url: '/pages/chargingCalculator/license'
+				})
+			}
 		}
 	};
 </script>
@@ -1052,5 +1070,33 @@
 	.hint {
 		text-align: center;
 		color: #787878;
+	}
+
+	.opensource {
+		margin-top: 20rpx;
+		display: flex;
+		justify-content: center;
+	}
+
+	.opensource-tap {
+		display: flex;
+		justify-content: center;
+		padding: 20rpx;
+		border-radius: 20rpx;
+		background-color: #ffffff;
+	}
+
+	.opensource-tap-hover {
+		background-color: #dcdcdc;
+	}
+
+	.opensource-hint {
+		color: #787878;
+		margin: 0 5rpx
+	}
+
+	.opensource-icon {
+		width: 40rpx;
+		height: 40rpx;
 	}
 </style>
