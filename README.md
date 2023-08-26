@@ -1,34 +1,40 @@
 # HSRchargingCalculator
-Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能计算器 
+Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能计算器
 
-## 项目介绍
+English | [简体中文](README_CN.md)
 
-本项目是微信小程序《咸鱼的崩铁助理》中的充能计算器页面。
+## Project Introduction
 
-使用uniapp开发，发布于微信小程序。
+This project is the "Charging Calculator" feature in the WeChat Mini Program called "咸鱼的崩铁助理" (which means "Salted Fish's Honkai Assistant").
 
-目前覆盖了《崩坏：星穹铁道》中的绝大部分充能场景。
+Developed using [uniapp](https://uniapp.dcloud.net.cn/) and released on the WeChat Mini Program platform.
+
+Currently covers the majority of the charging scenarios in the game "Honkai: Star Rail."
 
 ![miniprogram-qrcode](img/miniprogram-qrcode.jpg)
 
-## 项目截图
+## Project Screenshots
 
-这张图片是微信小程序的分享封面。
+Screenshots of the WeChat Mini Program.
 
-![preview](/src/static/preview-1.jpg)
+![preview](/img/preview.jpg)
 
-## 如何使用
+## How to Use
 
-### 开箱即用
+### Ready to Use
 
-在微信小程序中搜索《咸鱼的崩铁助理》或使用微信扫描上方的小程序码即可使用。
+Search for "咸鱼的崩铁助理" in WeChat or use WeChat to scan the QR code above to use it immediately.
 
-### 添加到项目中
+### Add to Your Project
 
-将 pages 文件夹和 static 文件夹复制到你的uniapp项目中，然后在项目的 pages.json 中添加对应的路由即可。
+Copy the `pages` and `static` folders into your uniapp project, and then add the corresponding routes to your `pages.json` file.
 
-## 许可证
+## License
 
-本项目使用 [MIT 许可证](LICENSE)。
+This project uses the [MIT License](LICENSE).
 
-本页面使用了来自 [RemixIcon](https://github.com/Remix-Design/RemixIcon/) 的图标，基于 [Apache 2.0](https://github.com/Remix-Design/RemixIcon/blob/master/License) 协议。
+The icons used in this page come from [RemixIcon](https://github.com/Remix-Design/RemixIcon/), which are licensed under the [Apache 2.0 License](https://github.com/Remix-Design/RemixIcon/blob/master/License).
+
+---
+
+English version of README is translated by [ChatGPT](https://chat.openai.com/).
