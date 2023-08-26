@@ -410,7 +410,7 @@
 			computedEnergyChargingNeeds() {
 				let needs = 0;
 				let energy = this.computedEnergyMax - this.computedExtraEnergy;
-				needs = (energy - this.computedEnergy) / this.computedEnergyEfficiency;
+				needs = energy / this.computedEnergyEfficiency - this.computedEnergy;
 				needs = +needs.toFixed(1);
 				if (needs < 0) {
 					needs = 0;
@@ -421,15 +421,15 @@
 			computedEnergyEfficiencyNeeds() {
 				let needs = 0;
 				let energy = this.computedEnergyMax - this.computedExtraEnergy;
-				needs = (energy / this.computedEnergy) || -1;
+				needs = (energy / this.computedEnergy) || 10;
 				needs = needs * 100 - 100;
 				needs = +needs.toFixed(1);
 				return needs;
 			},
 			computedEnergyEfficiencyNeedsStr() {
 				let needs = this.computedEnergyEfficiencyNeeds;
-				if (Math.abs(needs) > 300) return '- ';
-				else if (needs < 0) return 0;
+				if (needs < 0) return 0;
+				else if (needs > 300) return '- ';
 				else return needs;
 			},
 			computedEnergyMax() {
@@ -502,9 +502,17 @@
 
 				this.reset = 1;
 			},
-			handleCharacterChange(e) {
+			async handleCharacterChange(e) {
 				this.selectedCharacter = this.characterNames[e.mp.detail.value];
 				this.currentCharacter = this.characters[this.selectedCharacter];
+
+				for (let skill in this.currentCharacter.skills) {
+					await this.$set(this.currentCharacter.skills[skill], "active", true);
+				} // 强迫微信小程序重新渲染
+
+				for (let skill in this.currentCharacter.skills) {
+					await this.$set(this.currentCharacter.skills[skill], "active", false);
+				} // 强迫微信小程序重新渲染
 			},
 			handleLightConeChange(e) {
 				if (e.mp.detail.value === 0) {
