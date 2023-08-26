@@ -1,7 +1,3 @@
-非常感谢您的反馈，对不起因为我的翻译错误导致的误解。以下是修正后的版本。
-
----
-
 # HSRchargingCalculator
 Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能计算器 
 
