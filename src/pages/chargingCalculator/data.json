@@ -238,7 +238,7 @@
 							]
 						},
 						"天赋": {
-							"alwaysActive": true,
+							"alwaysActive": false,
 							"levels": [
 								7,
 								{

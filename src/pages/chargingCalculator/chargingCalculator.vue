@@ -109,6 +109,10 @@
 					<view class="custom-energy">
 						<view class="custom-energy-left"><text>自定义充能：</text></view>
 						<input class="custom-energy-right" type="number" v-model="customEnergy" placeholder="输入充能值" />
+						<view class="custom-energy-zero" hover-class="custom-energy-zero-hover"
+							@click="customEnergy_plusmn">
+							<view class="custom-energy-plusmn">±</view>
+						</view>
 					</view>
 				</view>
 				<!-- 自定义充能效率 -->
@@ -118,6 +122,10 @@
 						<input class="custom-energy-right" type="digit" v-model="customEnergyEfficiency"
 							placeholder="输入充能效率" />
 						<view class="custom-energy-percent">%</view>
+						<view class="custom-energy-zero" hover-class="custom-energy-zero-hover"
+							@click="customEnergyEfficiency_plusmn">
+							<view class="custom-energy-plusmn">±</view>
+						</view>
 					</view>
 				</view>
 				<!-- 自定义额外充能 -->
@@ -126,6 +134,10 @@
 						<view class="custom-energy-left"><text>自定义额外充能：</text></view>
 						<input class="custom-energy-right" type="number" v-model="customExtraEnergy"
 							placeholder="输入额外充能" />
+						<view class="custom-energy-zero" hover-class="custom-energy-zero-hover"
+							@click="customExtraEnergy_plusmn">
+							<view class="custom-energy-plusmn">±</view>
+						</view>
 					</view>
 				</view>
 
@@ -155,10 +167,11 @@
 			<!-- 第一行：已选择的行动 -->
 			<view class="selected-actions">
 				<view class="selected-action" hover-class="selected-action-hover"
-					v-for="(count, action) in selectedActions" :key="action">
+					v-for="(count, action) in selectedActions" :key="action" @click="delAction(action)">
 					<text>{{ actionNames[action] }}{{ count }}次</text>
 				</view>
 			</view>
+			<view class="hint-left" v-if="Object.keys(selectedActions).length > 0">点击行动以删除</view>
 			<view class="action-clear" hover-class="action-clear-hover" @click="clearActions">清空</view>
 			<!-- 第二行：可选择的行动 -->
 			<view class="available-actions">
@@ -185,18 +198,24 @@
 						<text>最终充能值：{{ computedFinalEnergy }} / {{ computedEnergyMax }}</text>
 					</view>
 				</view>
-				<view class="energy-placeholder" />
+			</view>
+			<view class="final-energy">
 				<view class="energy-chargingNeeds"
-					:class="{'energy-chargingNeeds-green':computedEnergyChargingNeeds < 19.45}"
-					hover-class="energy-chargingNeeds-hover" @click="showChargingTable">
-					<view><text>充能效率需求:</text></view>
-					<view class="energy-charging-question">
-						<image class="energy-charging-icon" src="/static/question-line.png" />
-						<view class="energy-placeholder" />
-						<view><text>{{ computedEnergyChargingNeedsStr }}%</text></view>
-					</view>
-
+					:class="{'energy-chargingNeeds-green':computedEnergyChargingNeeds <= 0}"
+					hover-class="energy-chargingNeeds-hover">
+					<view><text>充能缺口：</text></view>
+					<view><text>{{ computedEnergyChargingNeeds }}</text></view>
 				</view>
+				<view class="energy-chargingNeeds"
+					:class="{'energy-chargingNeeds-green':computedEnergyEfficiencyNeeds < 19.45}"
+					hover-class="energy-chargingNeeds-hover" @click="showChargingTable">
+					<view><text>充能效率需求：</text></view>
+					<view><text>{{ computedEnergyEfficiencyNeedsStr }}%</text></view>
+					<image class="energy-charging-icon" src="/static/question-line.png" />
+				</view>
+			</view>
+			<view class="final-energy">
+
 			</view>
 			<view class="hint">
 				最终充能值 = 充能值 × 充能效率 + 额外充能值
@@ -293,7 +312,7 @@
 
 				reset: 1,
 
-				version: "beta3"
+				version: "beta4"
 
 			};
 		},
@@ -313,6 +332,7 @@
 			lightConeNames() {
 				return ['无', ...Object.keys(this.lightCones)];
 			},
+			// 计算初始能量
 			computedInitialEnergy() {
 				// 如果是0.5，返回角色能量上限的50%
 				if (this.initialEnergy === 0.5) {
@@ -323,7 +343,7 @@
 					}
 				}
 				// 否则直接返回初始能量值
-				return this.initialEnergy;
+				return 5;
 			},
 			// 计算回合数
 			computedTurns() {
@@ -339,8 +359,11 @@
 					energy += this.getEffectValue(action) * this.selectedActions[action];
 					energy += this.getATKvalue(action) * this.selectedActions[action];
 				}
+				if (this.computedInitialEnergy == 5) {
+					energy += this.computedInitialEnergy;
+				}
 				energy += +this.customEnergy || 0;
-				energy += this.computedInitialEnergy + this.getEffectValue('energy') +
+				energy += this.getEffectValue('energy') +
 					(this.getEffectValue('turnStart') + this.getEffectValue('turnEnd')) * this.computedTurns;
 				if (Math.abs(energy - +energy.toFixed(0)) < 0.01) energy = +energy.toFixed(0);
 				else energy = +energy.toFixed(2);
@@ -363,12 +386,16 @@
 			// 计算额外充能值
 			computedExtraEnergy() {
 				let extra = 0;
+				if (this.computedInitialEnergy != 5) {
+					extra += this.computedInitialEnergy;
+				}
 				extra += this.getEffectValue('extraEnergy');
 				extra += +this.customExtraEnergy || 0;
 				if (Math.abs(extra - +extra.toFixed(0)) < 0.01) extra = +extra.toFixed(0);
 				else extra = +extra.toFixed(2);
 				return extra;
 			},
+
 			// 计算最终充能值
 			computedFinalEnergy() {
 				let energy = 0;
@@ -379,19 +406,30 @@
 
 				return energy;
 			},
-			// 计算充能需求
+			// 计算充能缺口
 			computedEnergyChargingNeeds() {
+				let needs = 0;
+				let energy = this.computedEnergyMax - this.computedExtraEnergy;
+				needs = (energy - this.computedEnergy) / this.computedEnergyEfficiency;
+				needs = +needs.toFixed(1);
+				if (needs < 0) {
+					needs = 0;
+				}
+				return needs;
+			},
+			// 计算充能效率需求
+			computedEnergyEfficiencyNeeds() {
 				let needs = 0;
 				let energy = this.computedEnergyMax - this.computedExtraEnergy;
 				needs = (energy / this.computedEnergy) || -1;
 				needs = needs * 100 - 100;
-				needs = +needs.toFixed(2);
+				needs = +needs.toFixed(1);
 				return needs;
 			},
-			computedEnergyChargingNeedsStr() {
-				let needs = this.computedEnergyChargingNeeds;
-				if (Math.abs(needs) > 200) return '- ';
-				else if (needs < 0) return '- ';
+			computedEnergyEfficiencyNeedsStr() {
+				let needs = this.computedEnergyEfficiencyNeeds;
+				if (Math.abs(needs) > 300) return '- ';
+				else if (needs < 0) return 0;
 				else return needs;
 			},
 			computedEnergyMax() {
@@ -487,6 +525,16 @@
 				} else {
 					this.$set(e, 'active', false);
 				}
+			},
+			// 微信小程序移动端无法输入负号
+			customEnergy_plusmn() {
+				this.customEnergy = - +this.customEnergy || 0;
+			},
+			customEnergyEfficiency_plusmn() {
+				this.customEnergyEfficiency = - +this.customEnergyEfficiency || 0;
+			},
+			customExtraEnergy_plusmn() {
+				this.customExtraEnergy = - +this.customExtraEnergy || 0;
 			},
 			showChargingTable() {
 				this.isChargingTable = true;
@@ -593,6 +641,16 @@
 					this.$set(this.selectedActions, action, 1);
 				} else {
 					this.selectedActions[action]++;
+				}
+			},
+			// 删除行动
+			delAction(action) {
+				if (this.selectedActions[action]) {
+					if (this.selectedActions[action] > 1) {
+						this.selectedActions[action]--;
+					} else {
+						this.$delete(this.selectedActions, action);
+					}
 				}
 			},
 			// 清空已选择的行动
@@ -864,6 +922,27 @@
 		margin-left: 10rpx;
 	}
 
+	.custom-energy-zero {
+		width: 35rpx;
+		height: 35rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #FFF;
+		background-color: #007ffc;
+		border: 0.5rpx solid #0067c8;
+		border-radius: 8rpx;
+		margin-left: 25rpx;
+	}
+
+	.custom-energy-zero-hover {
+		background-color: #0067c8;
+	}
+
+	.custom-energy-plusmn {
+		margin-top: -5rpx;
+	}
+
 	.skill-description.extra {
 		margin-top: -5rpx;
 		margin-bottom: 15rpx;
@@ -949,6 +1028,7 @@
 
 	.final-energy {
 		display: flex;
+		justify-content: space-between;
 		margin: 5rpx 10rpx;
 	}
 
@@ -969,18 +1049,12 @@
 		background-color: #c3ffcd;
 	}
 
-	.energy-placeholder {
-		flex: 1;
-	}
-
 	.energy-chargingNeeds {
-		margin-right: 20rpx;
-		padding: 5rpx 15rpx;
-		justify-self: flex-end;
+		margin-top: 15rpx;
+		padding: 10rpx 20rpx;
 		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-		border-radius: 15rpx;
+		align-items: center;
+		border-radius: 25rpx;
 		background-color: #ffe1e3;
 	}
 
@@ -989,18 +1063,12 @@
 	}
 
 	.energy-chargingNeeds-hover {
-		padding: 3rpx 13rpx;
+		padding: 8rpx 18rpx;
 		border: 1rpx solid #b4b4b4;
 	}
 
-	.energy-charging-question {
-		flex: 1;
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-	}
-
 	.energy-charging-icon {
+		margin-left: 15rpx;
 		width: 40rpx;
 		height: 40rpx;
 	}
@@ -1069,6 +1137,11 @@
 
 	.hint {
 		text-align: center;
+		color: #787878;
+	}
+
+	.hint-left {
+		margin-left: 20rpx;
 		color: #787878;
 	}
 
