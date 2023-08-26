@@ -1,21 +1,27 @@
+非常感谢您的反馈，对不起因为我的翻译错误导致的误解。以下是修正后的版本。
+
+---
+
 # HSRchargingCalculator
-Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能计算器
+Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能计算器 
 
 English | [简体中文](README_CN.md)
 
 ## Project Introduction
 
-This project is the "Charging Calculator" feature in the WeChat Mini Program called "咸鱼的崩铁助理" (which means "Salted Fish's Honkai Assistant").
+This project is part of the WeChat mini-program called "咸鱼的崩铁助理" (which means "Salted Fish's Honkai Assistant" in English). It serves as a charging calculator page.
 
-Developed using [uniapp](https://uniapp.dcloud.net.cn/) and released on the WeChat Mini Program platform.
+Developed using [uniapp](https://uniapp.dcloud.net.cn/) and deployed as a WeChat mini-program.
 
-Currently covers the majority of the charging scenarios in the game "Honkai: Star Rail."
+It currently covers a wide array of charging scenarios in Honkai: Star Rail.
 
 ![miniprogram-qrcode](img/miniprogram-qrcode.jpg)
 
+~~I don't know why no one made this after three versions, so I decided to make one myself; it's not that difficult.~~
+
 ## Project Screenshots
 
-Screenshots of the WeChat Mini Program.
+Screenshots from the WeChat mini-program "咸鱼的崩铁助理" (which means "Salted Fish's Honkai Assistant" in English).
 
 ![preview](/img/preview.jpg)
 
@@ -23,17 +29,17 @@ Screenshots of the WeChat Mini Program.
 
 ### Ready to Use
 
-Search for "咸鱼的崩铁助理" in WeChat or use WeChat to scan the QR code above to use it immediately.
+To use it immediately, search for "咸鱼的崩铁助理" in the WeChat mini-program or use WeChat to scan the QR code above.
 
 ### Add to Your Project
 
-Copy the `pages` and `static` folders into your uniapp project, and then add the corresponding routes to your `pages.json` file.
+Copy the `pages` and `static` folders into your uniapp project, then add the corresponding routes in your project's `pages.json` file.
 
 ## License
 
-This project uses the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
-The icons used in this page come from [RemixIcon](https://github.com/Remix-Design/RemixIcon/), which are licensed under the [Apache 2.0 License](https://github.com/Remix-Design/RemixIcon/blob/master/License).
+Icons on this page are sourced from [RemixIcon](https://github.com/Remix-Design/RemixIcon/), under the [Apache 2.0](https://github.com/Remix-Design/RemixIcon/blob/master/License) license.
 
 ---
 

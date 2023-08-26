@@ -13,6 +13,8 @@ Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能
 
 ![miniprogram-qrcode](img/miniprogram-qrcode.jpg)
 
+~~这东西又不难，我等了三个版本还没人做，于是我决定自己搓一个。~~
+
 ## 项目截图
 
 微信小程序截图。
@@ -27,7 +29,7 @@ Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能
 
 ### 添加到项目中
 
-将 pages 文件夹和 static 文件夹复制到你的uniapp项目中，然后在项目的 pages.json 中添加对应的路由即可。
+将 `pages` 文件夹和 `static` 文件夹复制到你的uniapp项目中，然后在项目的 `pages.json` 中添加对应的路由即可。
 
 ## 许可证
 
