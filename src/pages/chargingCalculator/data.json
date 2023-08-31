@@ -126,92 +126,104 @@
 			},
 			"lightCones": {
 				"轮契": {
-					"alwaysActive": true,
-					"levels": [
-						5,
-						{
-							"level": 5,
-							"ATK": 8,
-							"singleAttacked": 8,
-							"groupAttacked": 8
-						},
-						{
-							"level": 4,
-							"ATK": 7,
-							"singleAttacked": 7,
-							"groupAttacked": 7
-						},
-						{
-							"level": 3,
-							"ATK": 6,
-							"singleAttacked": 6,
-							"groupAttacked": 6
-						},
-						{
-							"level": 2,
-							"ATK": 5,
-							"singleAttacked": 5,
-							"groupAttacked": 5
-						},
-						{
-							"level": 1,
-							"ATK": 4,
-							"singleAttacked": 4,
-							"groupAttacked": 4
+					"skills": {
+						"轮契": {
+							"alwaysActive": true,
+							"levels": [
+								5,
+								{
+									"level": 5,
+									"ATK": 8,
+									"singleAttacked": 8,
+									"groupAttacked": 8
+								},
+								{
+									"level": 4,
+									"ATK": 7,
+									"singleAttacked": 7,
+									"groupAttacked": 7
+								},
+								{
+									"level": 3,
+									"ATK": 6,
+									"singleAttacked": 6,
+									"groupAttacked": 6
+								},
+								{
+									"level": 2,
+									"ATK": 5,
+									"singleAttacked": 5,
+									"groupAttacked": 5
+								},
+								{
+									"level": 1,
+									"ATK": 4,
+									"singleAttacked": 4,
+									"groupAttacked": 4
+								}
+							]
 						}
-					]
+					}
 				},
 				"记忆中的模样": {
-					"alwaysActive": true,
-					"levels": [
-						5,
-						{
-							"level": 1,
-							"ATK": 4
-						},
-						{
-							"level": 2,
-							"ATK": 5
-						},
-						{
-							"level": 3,
-							"ATK": 6
-						},
-						{
-							"level": 4,
-							"ATK": 7
-						},
-						{
-							"level": 5,
-							"ATK": 8
+					"skills": {
+						"记忆中的模样": {
+							"alwaysActive": true,
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"ATK": 4
+								},
+								{
+									"level": 2,
+									"ATK": 5
+								},
+								{
+									"level": 3,
+									"ATK": 6
+								},
+								{
+									"level": 4,
+									"ATK": 7
+								},
+								{
+									"level": 5,
+									"ATK": 8
+								}
+							]
 						}
-					]
+					}
 				},
 				"但战斗还未结束": {
-					"alwaysActive": true,
-					"levels": [
-						5,
-						{
-							"level": 1,
-							"energyEfficiency": 0.1
-						},
-						{
-							"level": 2,
-							"energyEfficiency": 0.12
-						},
-						{
-							"level": 3,
-							"energyEfficiency": 0.14
-						},
-						{
-							"level": 4,
-							"energyEfficiency": 0.16
-						},
-						{
-							"level": 5,
-							"energyEfficiency": 0.18
+					"skills": {
+						"但战斗还未结束": {
+							"alwaysActive": true,
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"energyEfficiency": 0.1
+								},
+								{
+									"level": 2,
+									"energyEfficiency": 0.12
+								},
+								{
+									"level": 3,
+									"energyEfficiency": 0.14
+								},
+								{
+									"level": 4,
+									"energyEfficiency": 0.16
+								},
+								{
+									"level": 5,
+									"energyEfficiency": 0.18
+								}
+							]
 						}
-					]
+					}
 				}
 			}
 		},
@@ -415,37 +427,82 @@
 									"special": 5
 								}
 							]
+						},
+						"星魂4": {
+							"alwaysActive": false,
+							"description": "敌人受到卡芙卡造成的触电伤害",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special_1": 2
+								}
+							]
 						}
 					}
 				}
 			},
 			"lightCones": {
 				"新手任务开始前": {
-					"alwaysActive": true,
-					"levels": [
-						5,
-						{
-							"level": 5,
-							"ATK": 8
-						},
-						{
-							"level": 4,
-							"ATK": 7
-						},
-						{
-							"level": 3,
-							"ATK": 6
-						},
-						{
-							"level": 2,
-							"ATK": 5
-						},
-						{
-							"level": 1,
-							"ATK": 4
+					"skills": {
+						"新手任务开始前": {
+							"alwaysActive": true,
+							"levels": [
+								5,
+								{
+									"level": 5,
+									"ATK": 8
+								},
+								{
+									"level": 4,
+									"ATK": 7
+								},
+								{
+									"level": 3,
+									"ATK": 6
+								},
+								{
+									"level": 2,
+									"ATK": 5
+								},
+								{
+									"level": 1,
+									"ATK": 4
+								}
+							]
 						}
-
-					]
+					}
+				},
+				"孤独的疗愈": {
+					"skills": {
+						"孤独的疗愈": {
+							"alwaysActive": true,
+							"description": "装备着施加持续伤害状态的敌人被消灭时",
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"special_3": 4
+								},
+								{
+									"level": 2,
+									"special_3": 1.5
+								},
+								{
+									"level": 3,
+									"special_3": 5
+								},
+								{
+									"level": 4,
+									"special_3": 5.5
+								},
+								{
+									"level": 5,
+									"special_3": 6
+								}
+							]
+						}
+					}
 				}
 			}
 		},
@@ -503,109 +560,125 @@
 			},
 			"lightCones": {
 				"一场术后对话": {
-					"alwaysActive": true,
-					"levels": [
-						5,
-						{
-							"level": 1,
-							"energyEfficiency": 0.08
-						},
-						{
-							"level": 2,
-							"energyEfficiency": 0.1
-						},
-						{
-							"level": 3,
-							"energyEfficiency": 0.12
-						},
-						{
-							"level": 4,
-							"energyEfficiency": 0.14
-						},
-						{
-							"level": 5,
-							"energyEfficiency": 0.16
+					"skills": {
+						"一场术后对话": {
+							"alwaysActive": true,
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"energyEfficiency": 0.08
+								},
+								{
+									"level": 2,
+									"energyEfficiency": 0.1
+								},
+								{
+									"level": 3,
+									"energyEfficiency": 0.12
+								},
+								{
+									"level": 4,
+									"energyEfficiency": 0.14
+								},
+								{
+									"level": 5,
+									"energyEfficiency": 0.16
+								}
+							]
 						}
-					]
+					}
 				},
 				"同一种心情": {
-					"alwaysActive": true,
-					"levels": [
-						5,
-						{
-							"level": 1,
-							"skill": 2
-						},
-						{
-							"level": 2,
-							"skill": 3
-						},
-						{
-							"level": 3,
-							"skill": 3
-						},
-						{
-							"level": 4,
-							"skill": 4
-						},
-						{
-							"level": 5,
-							"skill": 4
+					"skills": {
+						"同一种心情": {
+							"alwaysActive": true,
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"skill": 2
+								},
+								{
+									"level": 2,
+									"skill": 3
+								},
+								{
+									"level": 3,
+									"skill": 3
+								},
+								{
+									"level": 4,
+									"skill": 4
+								},
+								{
+									"level": 5,
+									"skill": 4
+								}
+							]
 						}
-					]
+					}
 				},
 				"棺的回响": {
-					"alwaysActive": true,
-					"description": "每命中1个敌人",
-					"levels": [
-						5,
-						{
-							"level": 1,
-							"special_3": 3
-						},
-						{
-							"level": 2,
-							"special_3": 4
-						},
-						{
-							"level": 3,
-							"special_3": 4
-						},
-						{
-							"level": 4,
-							"special_3": 5
-						},
-						{
-							"level": 5,
-							"special_3": 5
+					"skills": {
+						"棺的回响": {
+							"alwaysActive": true,
+							"description": "每命中1个敌人",
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"special_3": 3
+								},
+								{
+									"level": 2,
+									"special_3": 4
+								},
+								{
+									"level": 3,
+									"special_3": 4
+								},
+								{
+									"level": 4,
+									"special_3": 5
+								},
+								{
+									"level": 5,
+									"special_3": 5
+								}
+							]
 						}
-					]
+					}
 				},
 				"嘉果": {
-					"alwaysActive": true,
-					"levels": [
-						5,
-						{
-							"level": 1,
-							"energy": 6
-						},
-						{
-							"level": 2,
-							"energy": 8
-						},
-						{
-							"level": 3,
-							"energy": 9
-						},
-						{
-							"level": 4,
-							"energy": 11
-						},
-						{
-							"level": 5,
-							"energy": 12
+					"skills": {
+						"嘉果": {
+							"alwaysActive": true,
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"energy": 6
+								},
+								{
+									"level": 2,
+									"energy": 8
+								},
+								{
+									"level": 3,
+									"energy": 9
+								},
+								{
+									"level": 4,
+									"energy": 11
+								},
+								{
+									"level": 5,
+									"energy": 12
+								}
+							]
 						}
-					]
+					}
 				}
 			}
 		},
@@ -759,57 +832,65 @@
 			},
 			"lightCones": {
 				"别让世界静下来": {
-					"alwaysActive": false,
-					"description": "进入战斗时",
-					"levels": [
-						5,
-						{
-							"level": 1,
-							"energy": 20
-						},
-						{
-							"level": 2,
-							"energy": 23
-						},
-						{
-							"level": 3,
-							"energy": 26
-						},
-						{
-							"level": 4,
-							"energy": 29
-						},
-						{
-							"level": 5,
-							"energy": 32
+					"skills": {
+						"别让世界静下来": {
+							"alwaysActive": false,
+							"description": "进入战斗时",
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"energy": 20
+								},
+								{
+									"level": 2,
+									"energy": 23
+								},
+								{
+									"level": 3,
+									"energy": 26
+								},
+								{
+									"level": 4,
+									"energy": 29
+								},
+								{
+									"level": 5,
+									"energy": 32
+								}
+							]
 						}
-					]
+					}
 				},
 				"灵钥": {
-					"alwaysActive": true,
-					"levels": [
-						5,
-						{
-							"level": 5,
-							"skill": 12
-						},
-						{
-							"level": 4,
-							"skill": 11
-						},
-						{
-							"level": 3,
-							"skill": 10
-						},
-						{
-							"level": 2,
-							"skill": 9
-						},
-						{
-							"level": 1,
-							"skill": 8
+					"skills": {
+						"灵钥": {
+							"alwaysActive": true,
+							"levels": [
+								5,
+								{
+									"level": 5,
+									"skill": 12
+								},
+								{
+									"level": 4,
+									"skill": 11
+								},
+								{
+									"level": 3,
+									"skill": 10
+								},
+								{
+									"level": 2,
+									"skill": 9
+								},
+								{
+									"level": 1,
+									"skill": 8
+								}
+							]
 						}
-					]
+					}
 				}
 			}
 		},
@@ -973,9 +1054,121 @@
 							]
 						}
 					}
+				},
+				"丹恒·饮月": {
+					"attribute": "虚数",
+					"energyMax": 140,
+					"skill": 0,
+					"ATK": [
+						"basicATK",
+						"ultimate"
+					],
+					"skills": {
+						"瞬华": {
+							"alwaysActive": true,
+							"description": "强化1次",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 30
+								}
+							]
+						},
+						"天阴矢": {
+							"alwaysActive": true,
+							"description": "强化2次",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special_1": 35
+								}
+							]
+						},
+						"盘拏耀跃": {
+							"alwaysActive": true,
+							"description": "强化3次",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special_2": 40
+								}
+							]
+						},
+						"伏辰": {
+							"alwaysActive": false,
+							"description": "战斗开始时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"energy": 5
+								}
+							]
+						}
+					}
 				}
 			},
-			"lightCones": {}
+			"lightCones": {
+				"比阳光更明亮的": {
+					"skills": {
+						"【龙吟】": {
+							"alwaysActive": false,
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"energyEfficiency": 0.06
+								},
+								{
+									"level": 2,
+									"energyEfficiency": 0.07
+								},
+								{
+									"level": 3,
+									"energyEfficiency": 0.08
+								},
+								{
+									"level": 4,
+									"energyEfficiency": 0.09
+								},
+								{
+									"level": 5,
+									"energyEfficiency": 0.1
+								}
+							]
+						},
+						"【龙吟】2": {
+							"alwaysActive": false,
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"energyEfficiency": 0.06
+								},
+								{
+									"level": 2,
+									"energyEfficiency": 0.07
+								},
+								{
+									"level": 3,
+									"energyEfficiency": 0.08
+								},
+								{
+									"level": 4,
+									"energyEfficiency": 0.09
+								},
+								{
+									"level": 5,
+									"energyEfficiency": 0.1
+								}
+							]
+						}
+					}
+				}
+			}
 		},
 		"寻猎": {
 			"characters": {
@@ -1133,5 +1326,24 @@
 				}
 			]
 		}
+	},
+	"effectDescriptions": {
+		"skill": "战技充能+",
+		"basicATK": "普通攻击充能+",
+		"singleAttacked": "受到单体攻击充能+",
+		"groupAttacked": "受到群体攻击充能+",
+		"enemyKill": "击杀敌人充能+",
+		"followUp": "追加攻击充能+",
+		"ultimate": "使用终结技后充能+",
+		"energyEfficiency": "充能效率增加",
+		"extraEnergy": "额外充能+",
+		"energy": "充能+",
+		"ATK": "攻击敌人后充能+",
+		"turnStart": "回合开始时充能+",
+		"turnEnd": "回合结束时充能+",
+		"special": "特殊充能+",
+		"special_1": "特殊(2)充能+",
+		"special_2": "特殊(3)充能+",
+		"special_3": "特殊(4)充能+"
 	}
 }

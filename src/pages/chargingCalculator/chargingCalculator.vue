@@ -64,26 +64,37 @@
 				</view>
 			</picker>
 
-			<!-- 光锥效果展示 -->
-			<view class="skill-row" v-if="selectedLightCone && selectedLightCone !== '无'">
-				<view>
-					<switch v-if="!currentLightCone.alwaysActive" @change="handleActivation(currentLightCone)"
-						:checked="currentLightCone.active" color="#007ffc" />
+
+
+
+			<!-- 技能列表 -->
+			<view v-if="selectedLightCone && selectedLightCone !== '无' && reset">
+				<view class="character-skill" v-for="(skill, skillName) in currentLightCone.skills" :key="skillName">
+					<view class="skill-row">
+						<view class="switch-container">
+							<switch v-if="!skill.alwaysActive" @change="handleActivation(skill)" :checked="skill.active"
+								color="#007ffc" />
+						</view>
+						<view class="skill-name" v-if="Object.keys(currentLightCone.skills).length>1">
+							<text>{{ skillName }}</text>
+						</view>
+						<!-- 选等级 -->
+						<view class="level-cell"
+							:class="{ 'level-cell-selected': (skill.selectedLevel||1) === index + 1 }"
+							hover-class="level-cell-hover" v-if="skill.levels[0] > 1"
+							v-for="(level,index) in skill.levels.slice(1)" :key="level.level"
+							@click="selectLevel(skill, index)">
+							<text>{{ level.level }}</text>
+						</view>
+					</view>
+					<view class="skill-description">
+						<text>{{ getSkillDescription(skill) }}</text>
+					</view>
 				</view>
-				<view class="level-cell"
-					:class="{ 'level-cell-selected': (currentLightCone.selectedLevel||1) === index + 1 }"
-					hover-class="level-cell-hover" v-if="currentLightCone.levels[0] > 1"
-					v-for="(level,index) in currentLightCone.levels.slice(1)" :key="level.level"
-					@click="selectLevel(currentLightCone, index)">
-					<text>{{ level.level }}</text>
-
-				</view>
-
-
 			</view>
-			<view class="skill-description" v-if="selectedLightCone && selectedLightCone !== '无'">
-				<text>{{ getSkillDescription(currentLightCone) }}</text>
-			</view>
+
+
+
 		</view>
 
 		<view class="hint">
@@ -95,9 +106,9 @@
 			<view class="picker extra" hover-class="picker-hover" @click="toggleExtraEffects">
 				<view><text>{{ isExtraEffectsExpanded ? '收起额外效果' : '展开额外效果' }}</text></view>
 			</view>
-			<view v-if="isExtraEffectsExpanded">
+			<view>
 				<!-- 初始能量 -->
-				<view class="skill-row extra">
+				<view class="skill-row extra" v-if="isExtraEffectsExpanded || initialEnergy != 5">
 					<view class="initial-energy"><text>初始能量：{{ computedInitialEnergy }}</text></view>
 					<view class="level-cell" :class="{ 'level-cell-selected': initialEnergy === 5 }"
 						hover-class="level-cell-hover" @click="setInitialEnergy(5)">5</view>
@@ -105,7 +116,7 @@
 						hover-class="level-cell-hover" @click="setInitialEnergy(0.5)">50%</view>
 				</view>
 				<!-- 自定义充能 -->
-				<view class="skill-row extra">
+				<view class="skill-row extra" v-if="isExtraEffectsExpanded || customEnergy != (0||'')">
 					<view class="custom-energy">
 						<view class="custom-energy-left"><text>自定义充能：</text></view>
 						<input class="custom-energy-right" type="number" v-model="customEnergy" placeholder="输入充能值" />
@@ -116,7 +127,7 @@
 					</view>
 				</view>
 				<!-- 自定义充能效率 -->
-				<view class="skill-row extra">
+				<view class="skill-row extra" v-if="isExtraEffectsExpanded || customEnergyEfficiency != (0||'')">
 					<view class="custom-energy">
 						<view class="custom-energy-left"><text>自定义充能效率：</text></view>
 						<input class="custom-energy-right" type="digit" v-model="customEnergyEfficiency"
@@ -129,7 +140,7 @@
 					</view>
 				</view>
 				<!-- 自定义额外充能 -->
-				<view class="skill-row extra">
+				<view class="skill-row extra" v-if="isExtraEffectsExpanded || customExtraEnergy != (0||'')">
 					<view class="custom-energy">
 						<view class="custom-energy-left"><text>自定义额外充能：</text></view>
 						<input class="custom-energy-right" type="number" v-model="customExtraEnergy"
@@ -142,7 +153,7 @@
 				</view>
 
 				<view v-for="(effect, effectName) in extraEffects" :key="effectName">
-					<view class="skill-row">
+					<view class="skill-row" v-if="isExtraEffectsExpanded || effect.active">
 						<switch @change="handleActivation(effect)" :checked="effect.active" color="#007ffc" />
 						<view class="skill-name extra"><text>{{ effectName }}</text></view>
 						<view class="level-cell"
@@ -170,8 +181,9 @@
 					v-for="(count, action) in selectedActions" :key="action" @click="delAction(action)">
 					<text>{{ actionNames[action] }}{{ count }}次</text>
 				</view>
+				<view class="hint-left" v-if="Object.keys(selectedActions).length < 1">点击已选择的行动可以删除</view>
 			</view>
-			<view class="hint-left" v-if="Object.keys(selectedActions).length > 0">点击行动以删除</view>
+
 			<view class="action-clear" hover-class="action-clear-hover" @click="clearActions">清空</view>
 			<!-- 第二行：可选择的行动 -->
 			<view class="available-actions">
@@ -243,7 +255,7 @@
 		</view>
 
 		<view class="version">
-			<view class="hint">充能计算器 {{version}}</view>
+			<view class="hint">充能计算器 {{displayVersion}}</view>
 		</view>
 
 		<view class="opensource">
@@ -281,6 +293,7 @@
 				customEnergyEfficiency: 0, // 用户输入的自定义充能效率值
 				customExtraEnergy: 0, // 用户输入的自定义额外充能值
 				actionView: 0, // 用于刷新行动输入栏
+				effectDescriptions: {},
 				actionNames: {
 					"skill": "战技",
 					"basicATK": "普通攻击",
@@ -300,7 +313,7 @@
 				],
 				turns: 0, // 记录回合数
 				energy: 0, // 记录充能值
-				energyEfficiency: 1, // 初始充能效率为100% (1)
+				energyEfficiency: 1, // 初始充能效率为100%
 				extraEnergy: 0, // 额外充能值
 				finalEnergy: 0, // 最终充能值
 
@@ -312,7 +325,8 @@
 
 				reset: 1,
 
-				version: "beta4"
+				version: 100,
+				displayVersion: "v1.0.0"
 
 			};
 		},
@@ -481,6 +495,7 @@
 				console.log(this.availableActions);
 			},
 			async handleTypeSelection(typeName) {
+				this.reset = 0;
 				this.selectedType = typeName;
 				this.characters = this.types[this.selectedType].characters;
 				this.lightCones = this.types[this.selectedType].lightCones || {};
@@ -556,27 +571,9 @@
 			toggleExtraEffects() {
 				this.isExtraEffectsExpanded = !this.isExtraEffectsExpanded;
 			},
+			// 获取技能描述
 			getSkillDescription(skill) {
-				const effectDescriptions = {
-					"skill": "战技充能+",
-					"basicATK": "普通攻击充能+",
-					"singleAttacked": "受到单体攻击充能+",
-					"groupAttacked": "受到群体攻击充能+",
-					"enemyKill": "击杀敌人充能+",
-					"followUp": "追加攻击充能+",
-					"ultimate": "使用终结技后充能+",
-					"energyEfficiency": "充能效率增加",
-					"extraEnergy": "额外充能+",
-					"energy": "充能+",
-					"ATK": "攻击敌人后充能+",
-					"turnStart": "回合开始时充能+",
-					"turnEnd": "回合结束时充能+",
-					// 可能还有其他效果描述
-					"special": "特殊充能+",
-					"special_1": "特殊(2)充能+",
-					"special_2": "特殊(3)充能+",
-					"special_3": "特殊(4)充能+",
-				};
+				let effectDescriptions = data.effectDescriptions;
 
 				const level = skill.levels[skill.selectedLevel] || skill.levels[1];
 				const descriptions = [];
@@ -626,11 +623,13 @@
 					}
 
 				// 检查当前光锥
-				if (this.currentLightCone && (this.currentLightCone.alwaysActive || this.currentLightCone.active)) {
-					if (this.currentLightCone.levels[1][action]) {
-						return true;
+				if (this.currentLightCone && this.currentLightCone.skills)
+					for (let skillName in this.currentLightCone.skills) {
+						let skill = this.currentLightCone.skills[skillName];
+						if ((skill.alwaysActive || skill.active) && skill.levels[1][action]) {
+							return true;
+						}
 					}
-				}
 
 				// 检查额外效果
 				for (const effectName in this.extraEffects) {
@@ -687,11 +686,15 @@
 						}
 					}
 				// 从光锥中获取值
-				if (this.currentLightCone && (this.currentLightCone.alwaysActive || this.currentLightCone.active)) {
-					let levelindex = this.currentLightCone.selectedLevel || 1;
-					let level = this.currentLightCone.levels[levelindex];
-					value += level[key] || 0;
-				}
+				if (this.currentLightCone && this.currentLightCone.skills)
+					for (const skill in this.currentLightCone.skills) {
+						if (this.currentLightCone.skills[skill].alwaysActive || this.currentLightCone.skills[skill]
+							.active) {
+							let levelindex = this.currentLightCone.skills[skill].selectedLevel || 1;
+							let level = this.currentLightCone.skills[skill].levels[levelindex];
+							value += level[key] || 0;
+						}
+					}
 
 				// 从额外效果中获取值
 				for (const effectKey in this.extraEffects) {
@@ -722,11 +725,15 @@
 						}
 					}
 				// 从光锥中获取值
-				if (this.currentLightCone && (this.currentLightCone.alwaysActive || this.currentLightCone.active)) {
-					let levelindex = this.currentLightCone.selectedLevel || 1;
-					let level = this.currentLightCone.levels[levelindex];
-					value += level['ATK'] || 0;
-				}
+				if (this.currentLightCone && this.currentLightCone.skills)
+					for (const skill in this.currentLightCone.skills) {
+						if (this.currentLightCone.skills[skill].alwaysActive || this.currentLightCone.skills[skill]
+							.active) {
+							let levelindex = this.currentLightCone.skills[skill].selectedLevel || 1;
+							let level = this.currentLightCone.skills[skill].levels[levelindex]
+							value += level['ATK'] || 0;
+						}
+					}
 
 				// 从额外效果中获取值
 				for (const effectKey in this.extraEffects) {
@@ -931,8 +938,8 @@
 	}
 
 	.custom-energy-zero {
-		width: 35rpx;
-		height: 35rpx;
+		width: 40rpx;
+		height: 40rpx;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -948,7 +955,8 @@
 	}
 
 	.custom-energy-plusmn {
-		margin-top: -5rpx;
+		margin-top: -4rpx;
+		font-size: 40rpx;
 	}
 
 	.skill-description.extra {
@@ -963,7 +971,7 @@
 	.selected-actions {
 		display: flex;
 		margin: 10rpx 20rpx;
-		min-height: 100rpx;
+		min-height: 65rpx;
 		border: 1rpx solid #a0a0a0;
 		border-radius: 20rpx;
 		padding: 10rpx 15rpx;
@@ -1004,7 +1012,7 @@
 	.available-actions {
 		display: flex;
 		margin: 10rpx 20rpx;
-		min-height: 100rpx;
+		min-height: 65rpx;
 		flex-flow: row wrap;
 		justify-content: flex-start;
 		border-radius: 20rpx;
