@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view class="licence">
+		<view class="licence" hover-class="licence-hover" @click="copyToClipboard">
 			<view>开源地址：</view>
 			<view class="url"><text selectable user-select>https://github.com/xyxyx718/HSRchargingCalculator</text>
 			</view>
@@ -44,7 +44,17 @@ SOFTWARE.
 			}
 		},
 		methods: {
-
+			copyToClipboard() {
+				uni.setClipboardData({
+					data: 'https://github.com/xyxyx718/HSRchargingCalculator',
+					success: function() {
+						uni.showToast({
+							title: '链接地址已复制',
+							icon: 'success'
+						});
+					}
+				});
+			},
 		}
 	}
 </script>
@@ -57,7 +67,12 @@ SOFTWARE.
 		border-radius: 20rpx;
 	}
 
+	.licence-hover {
+		background-color: #f0f0f0;
+	}
+
 	.url {
 		word-break: break-all;
+		text-decoration: underline;
 	}
 </style>
