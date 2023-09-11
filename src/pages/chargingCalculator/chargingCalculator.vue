@@ -325,8 +325,8 @@
 
 				reset: 1,
 
-				version: 100,
-				displayVersion: "v1.0.0"
+				version: 101,
+				displayVersion: "v1.0.1"
 
 			};
 		},
@@ -764,6 +764,7 @@
 	.container {
 		padding: 20rpx;
 		background-color: #F0F0F0;
+		font-size: 30rpx;
 	}
 
 	.type-selection {
@@ -773,13 +774,7 @@
 	}
 
 	.type {
-		padding: 10rpx 20rpx;
-		background-color: #FFF;
-		border: 1rpx solid #00b4ff;
-	}
-
-	.type {
-		padding: 10rpx 20rpx;
+		padding: 10rpx 15rpx;
 		background-color: #FFF;
 		border: 1rpx solid #007ffc;
 	}
