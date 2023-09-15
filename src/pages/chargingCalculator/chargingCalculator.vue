@@ -269,13 +269,13 @@
 </template>
 
 <script>
-	import data from './data.json';
+	import defaultData from './data.json';
 
 	export default {
 		data() {
 			return {
 				testtext: '',
-				types: data.types,
+				data: null,
 				selectedType: '同谐', // 当前选择的类型
 				selectedCharacter: null, // 当前选择的角色名字
 				selectedLightCone: null, // 当前选择的光锥名字
@@ -283,7 +283,6 @@
 				currentLightCone: null, // 当前选择的光锥数据
 				characters: {}, // 当前选择的类型对应的角色列表
 				lightCones: {}, // 当前选择的类型对应的光锥列表
-				extraEffects: data.extraEffects, // 额外效果列表
 				selectedExtraEffect: null, // 当前选择的额外效果名字
 				currentExtraEffect: null, // 当前选择的额外效果数据
 				isExtraEffectsExpanded: true, // 控制额外效果展开/收起的状态
@@ -325,8 +324,8 @@
 
 				reset: 1,
 
-				version: 101,
-				displayVersion: "v1.0.1"
+				version: 102,
+				displayVersion: "v1.1.0"
 
 			};
 		},
@@ -337,6 +336,14 @@
 			}
 		},
 		computed: {
+			types() {
+				// 类型列表
+				return this.data.types;
+			},
+			extraEffects() {
+				// 额外效果列表
+				return this.data.extraEffects;
+			},
 			typeNames() {
 				return Object.keys(this.types);
 			},
@@ -353,7 +360,7 @@
 					if (this.currentCharacter.energyMax) {
 						return this.currentCharacter.energyMax * 0.5;
 					} else {
-						return data.defaultTemplate.energyMax * 0.5;
+						return this.data.defaultTemplate.energyMax * 0.5;
 					}
 				}
 				// 否则直接返回初始能量值
@@ -447,10 +454,14 @@
 				else return needs;
 			},
 			computedEnergyMax() {
-				return this.currentCharacter.energyMax || data.defaultTemplate.energyMax;
+				return this.currentCharacter.energyMax || this.data.defaultTemplate.energyMax;
 			}
 		},
 		watch: {
+			data() {
+				this.types;
+				this.extraEffects;
+			},
 			currentCharacter() {
 				this.computedEnergy;
 				this.computedEnergyEfficiency;
@@ -470,7 +481,58 @@
 				this.actionView++;
 			},
 		},
-		created() {
+		onLoad() {
+			console.log('page loaded');
+		},
+		async onReady() {
+
+			uni.showToast({
+				title: '数据更新中…',
+				icon: 'loading',
+			});
+
+			// 尝试从本地文件系统读取缓存数据
+			let localData = await this.$readJSONfromFile('/data');
+			if (!localData) {
+				localData = defaultData;
+			}
+
+			let data = localData;
+
+			// 获取在线数据
+			const dataUrl =
+				'https://gitee.com/XYXYXian/HSRchargingCalculator/raw/main/src/pages/chargingCalculator/data.json';
+
+			await uni.request({
+				url: dataUrl,
+				success: (response) => {
+					console.log('连接成功');
+					if (response.statusCode === 200) {
+						const onlineData = response.data;
+						console.log('获取数据成功：', onlineData);
+						console.log('localData.version:', localData.version);
+						console.log('onlineData.version:', onlineData.version);
+						console.log('this.version:', this.version);
+						console.log('onlineData.minimumVersion:', onlineData.minimumVersion);
+						// 对比版本信息
+						if ((this.version >= onlineData.minimumVersion) &&
+							(onlineData.version > localData.version)) {
+							data = onlineData; // 使用在线数据
+							this.data = data;
+							// 如果在线数据版本较新，则更新本地缓存
+							this.$writeJSONtoFile('/data', onlineData);
+							
+						}
+					}
+				},
+				fail: (error) => {
+					// 错误处理，例如网络问题
+					console.log('Failed to fetch online data:', error);
+				}
+			});
+
+			this.data = data;
+
 			// 如果默认的类型存在
 			if (this.types[this.selectedType]) {
 				this.characters = this.types[this.selectedType].characters;
@@ -486,6 +548,7 @@
 				// 默认选择光锥为 "无"
 				this.selectedLightCone = "无";
 			}
+			console.log('page ready');
 		},
 		methods: {
 			test() {
@@ -573,7 +636,7 @@
 			},
 			// 获取技能描述
 			getSkillDescription(skill) {
-				let effectDescriptions = data.effectDescriptions;
+				let effectDescriptions = this.data.effectDescriptions;
 
 				const level = skill.levels[skill.selectedLevel] || skill.levels[1];
 				const descriptions = [];
@@ -605,7 +668,7 @@
 			// 检查行动是否可用（不为null）
 			isActionAvailable(action) {
 				// 检查当前角色
-				if (this.currentCharacter[action] || data.defaultTemplate[action]) {
+				if (this.currentCharacter[action] || this.data.defaultTemplate[action]) {
 					return true;
 				}
 
@@ -672,8 +735,8 @@
 				}
 
 				// 从默认模板中获取值
-				else if (data.defaultTemplate[key]) {
-					value += data.defaultTemplate[key];
+				else if (this.data.defaultTemplate[key]) {
+					value += this.data.defaultTemplate[key];
 				}
 				// 从角色技能中获取值
 				if (this.currentCharacter.skills)
