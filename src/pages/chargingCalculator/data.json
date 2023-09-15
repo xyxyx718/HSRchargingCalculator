@@ -1,4 +1,6 @@
 {
+	"version":100,
+	"minimumVersion":100,
 	"defaultTemplate": {
 		"energyMax": 120,
 		"energyEfficiency": 1,
