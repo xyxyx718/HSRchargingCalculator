@@ -944,7 +944,7 @@
 				},
 				"杰帕德": {
 					"attribute": "冰",
-					"energyMax": 120,
+					"energyMax": 100,
 					"ATK": [
 						"basicATK",
 						"skill"
