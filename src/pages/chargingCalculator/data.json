@@ -1,5 +1,5 @@
 {
-	"version":100,
+	"version":101,
 	"minimumVersion":100,
 	"defaultTemplate": {
 		"energyMax": 120,
