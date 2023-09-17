@@ -6,7 +6,7 @@ Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能
 
 ## 项目介绍
 
-本项目是微信小程序《咸鱼的崩铁助理》中的充能计算器页面。
+本项目是微信小程序[《咸鱼的崩铁助理》](%E5%92%B8%E9%B1%BC%E7%9A%84%E5%B4%A9%E9%93%81%E5%8A%A9%E7%90%86.md)中的充能计算器页面。
 
 使用 [uniapp](https://uniapp.dcloud.net.cn/) 开发，发布于微信小程序。
 

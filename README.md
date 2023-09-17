@@ -6,7 +6,7 @@ English | [简体中文](README_CN.md)
 
 ## Project Introduction
 
-This project is the Charging Calculator page within the WeChat Mini Program "咸鱼的崩铁助理"(which means "Salted Fish's HSR Assistant" in English).
+This project is the Charging Calculator page within the WeChat Mini Program ["咸鱼的崩铁助理"](%E5%92%B8%E9%B1%BC%E7%9A%84%E5%B4%A9%E9%93%81%E5%8A%A9%E7%90%86.md)(which means "Salted Fish's HSR Assistant" in English).
 
 Developed using [uniapp](https://uniapp.dcloud.net.cn/), and published as a WeChat Mini Program.
 
