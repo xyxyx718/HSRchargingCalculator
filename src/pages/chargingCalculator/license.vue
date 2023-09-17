@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="licence" hover-class="licence-hover" @click="copyToClipboard">
-			<view>开源地址：</view>
+			<view>开源地址(点击复制)：</view>
 			<view class="url"><text selectable user-select>https://github.com/xyxyx718/HSRchargingCalculator</text>
 			</view>
 			<view>本项目遵循MIT License</view>
