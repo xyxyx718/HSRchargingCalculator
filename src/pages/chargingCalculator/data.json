@@ -252,7 +252,8 @@
 							]
 						},
 						"天赋": {
-							"alwaysActive": false,
+							"alwaysActive": false,							
+							"description": "若目标处于负面状态",
 							"levels": [
 								7,
 								{
@@ -448,7 +449,8 @@
 				"新手任务开始前": {
 					"skills": {
 						"新手任务开始前": {
-							"alwaysActive": true,
+							"alwaysActive": false,
+							"description": "若目标防御力被降低",
 							"levels": [
 								5,
 								{
@@ -479,7 +481,7 @@
 					"skills": {
 						"孤独的疗愈": {
 							"alwaysActive": true,
-							"description": "装备着施加持续伤害状态的敌人被消灭时",
+							"description": "装备者施加持续伤害状态的敌人被消灭时",
 							"levels": [
 								5,
 								{
@@ -1174,6 +1176,18 @@
 							]
 						}
 					}
+				},
+				"镜流": {
+					"attribute": "冰",
+					"energyMax": 140,
+					"basicATK": 20,
+					"skill": 30,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate"
+					],
+					"skills": {}
 				}
 			},
 			"lightCones": {
