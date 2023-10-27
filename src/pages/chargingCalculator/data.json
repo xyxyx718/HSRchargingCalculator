@@ -1,5 +1,5 @@
 {
-	"version": 103,
+	"version": 104,
 	"minimumVersion": 100,
 	"defaultTemplate": {
 		"energyMax": 120,
@@ -330,11 +330,12 @@
 					"skills": {
 						"星魂2": {
 							"alwaysActive": false,
+							"description": "触发天赋(击中减速目标)时",
 							"levels": [
 								1,
 								{
 									"level": 1,
-									"ATK": 3
+									"special": 3
 								}
 							]
 						},
@@ -433,7 +434,31 @@
 						},
 						"星魂4": {
 							"alwaysActive": false,
-							"description": "敌人受到卡芙卡造成的触电伤害",
+							"description": "卡芙卡施加的触电状态每造成一次伤害",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special_1": 2
+								}
+							]
+						}
+					}
+				},
+				"桂乃芬": {
+					"attribute": "雷",
+					"energyMax": 120,
+					"followUp": 10,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"ultimate",
+						"followUp"
+					],
+					"skills": {
+						"星魂4": {
+							"alwaysActive": false,
+							"description": "桂乃芬施加的灼烧状态每造成一次伤害",
 							"levels": [
 								1,
 								{
@@ -1310,6 +1335,51 @@
 								{
 									"level": 1,
 									"enemyKill": 15
+								}
+							]
+						}
+					}
+				},
+				"托帕&账账": {
+					"attribute": "火",
+					"energyMax": 130,
+					"ATK": [
+						"basicATK",
+						"skill",
+						"followUp"
+					],
+					"followUp":0,
+					"skills": {
+						"技术性调整": {
+							"alwaysActive": true,
+							"description": "账账在【涨幅惊人！】状态下攻击后",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 10
+								}
+							]
+						},
+						"秘技": {
+							"alwaysActive": false,
+							"description": "账账首次攻击后",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"extraEnergy": 60
+								}
+							]
+						},
+						"星魂2": {
+							"alwaysActive": false,
+							"description": "账账行动并攻击后",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special_1": 5
 								}
 							]
 						}
