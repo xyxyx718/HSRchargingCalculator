@@ -1,5 +1,5 @@
 {
-	"version": 105,
+	"version": 106,
 	"minimumVersion": 100,
 	"defaultTemplate": {
 		"energyMax": 120,
@@ -1440,7 +1440,7 @@
 		}
 	},
 	"extraEffects": {
-		"翁瓦克": {
+		"翁瓦克/皮诺康尼": {
 			"levels": [
 				1,
 				{
