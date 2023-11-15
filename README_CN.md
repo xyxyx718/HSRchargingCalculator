@@ -1,6 +1,6 @@
 # HSRchargingCalculator
 
-Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能计算器 
+Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能计算器
 
 [English](README.md) | 简体中文
 
@@ -54,7 +54,7 @@ Charging Calculator for Honkai: Star Rail | 《咸鱼的崩铁助理》的充能
 
 以下是翻译时使用的文本：
 
-```
+```text
 帮我将这个README翻译成英文，以下是要求和文档内容：
 要求：
 标题下的第一行简介不需要修改。
