@@ -1,5 +1,5 @@
 {
-	"version": 104,
+	"version": 105,
 	"minimumVersion": 100,
 	"defaultTemplate": {
 		"energyMax": 120,
@@ -585,6 +585,26 @@
 							]
 						}
 					}
+				},
+				"藿藿": {
+					"attribute": "风",
+					"energyMax": 140,
+					"ATK": [
+						"basicATK"
+					],
+					"skills": {
+						"怯惧应激": {
+							"alwaysActive": true,
+							"description": "触发天赋时",
+							"levels": [
+								1,
+								{
+									"level": 1,
+									"special": 1
+								}
+							]
+						}
+					}
 				}
 			},
 			"lightCones": {
@@ -704,6 +724,36 @@
 								{
 									"level": 5,
 									"energy": 12
+								}
+							]
+						}
+					}
+				},
+				"惊魂夜": {
+					"skills": {
+						"深度深呼吸": {
+							"alwaysActive": true,
+							"levels": [
+								5,
+								{
+									"level": 1,
+									"energyEfficiency": 0.12
+								},
+								{
+									"level": 2,
+									"energyEfficiency": 0.14
+								},
+								{
+									"level": 3,
+									"energyEfficiency": 0.16
+								},
+								{
+									"level": 4,
+									"energyEfficiency": 0.18
+								},
+								{
+									"level": 5,
+									"energyEfficiency": 0.20
 								}
 							]
 						}
